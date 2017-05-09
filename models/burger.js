@@ -4,16 +4,15 @@ module.exports = function(sequelize, DataTypes) {
             type: DataTypes.STRING,
             allowNull: false,
             validate: {
-                len: [1],
-                notNull: true
+                len: [1]
             },
         },
         devoured: {
             type: DataTypes. BOOLEAN,
+            defaultValue: false,
             allowNull: false,
             validate: {
-                len: [1],
-                notNull: true,
+                len: [1]
             },
         },
     });
