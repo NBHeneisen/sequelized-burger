@@ -1,9 +1,9 @@
 var express = require("express");
 var bodyParser = require("body-parser");
 var methodOverride = require("method-override");
+var db = require("./models");
 
-
-var port = process.env.PORT || 8080;
+var PORT = process.env.PORT || 8080;
 
 var app = express();
 
@@ -21,4 +21,9 @@ app.set("view engine", "handlebars");
 
 require("./controllers/burgers_controller.js")(app);
 
-app.listen(port);
+// Syncing our sequelize models and then starting our express app
+db.sequelize.sync({ force: true }).then(function() {
+  app.listen(PORT, function() {
+    console.log("App listening on PORT " + PORT);
+  });
+});

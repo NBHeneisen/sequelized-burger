@@ -1,25 +1,18 @@
-express = require("express");
-
-var orm = require("../config/orm.js");
+var express = require("express");
+var db = require("../models")
 
 module.exports = function (app) {
     app.get("/", function (req, res) {
-        orm.selectAll(function(data) {
-            res.render("index", {result:data});
+        db.Burger.findAll({}).then(function(dbBurger) {
+            res.json(dbBurger);
         });
     });
 
 
     app.post("/add", function(req, res) {
-        console.log(req.body);
-        orm.insertOne(req.body.burger_name, false, req.body.date)
-        res.redirect("/");
     })
 
     app.put("/:id", function(req,res) {
-        console.log(req.params.id);
-        orm.updateOne(req.params.id);
-        res.redirect("/");
     })
 
     
