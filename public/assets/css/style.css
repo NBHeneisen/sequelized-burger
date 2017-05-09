@@ -1,0 +1,16 @@
+body {
+    background-color: burlywood;
+    text-align: center;
+}
+
+.jumbotron {
+    background-color: burlywood;
+}
+
+.devoured {
+    color: grey;
+}
+
+p {
+    margin-top: 15px
+}
